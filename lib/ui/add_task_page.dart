@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_todoey/models/task_data.dart';
+import 'package:flutter_todoey/models/task_model.dart';
+import 'package:provider/provider.dart';
 
 class AddTaskPage extends StatelessWidget {
   String newTaskTitle;
-  final Function addTaskCallBack;
-
-  AddTaskPage({@required this.addTaskCallBack});
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,8 @@ class AddTaskPage extends StatelessWidget {
               color: Colors.lightBlueAccent,
               onPressed: () {
                 if (newTaskTitle != null) {
-                  addTaskCallBack(newTaskTitle);
+                  Provider.of<TaskData>(context)
+                      .addTask(Task(name: newTaskTitle));
                   Navigator.pop(context);
                 }
               },
