@@ -1,33 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_todoey/models/task_data.dart';
 import 'package:flutter_todoey/models/task_model.dart';
 import 'package:flutter_todoey/ui/add_task_page.dart';
 import 'package:flutter_todoey/ui/widgets/tasks_list.dart';
+import 'package:provider/provider.dart';
 
-class TaskScreen extends StatefulWidget {
-  @override
-  _TaskScreenState createState() => _TaskScreenState();
-}
-
-class _TaskScreenState extends State<TaskScreen> {
-  List<Task> tasks = [
-    Task(
-      name: 'Grab SOme bear',
-    ),
-    Task(
-      name: 'Grab SOme bear',
-    ),
-    Task(
-      name: 'Grab SOme bear',
-    ),
-    Task(
-      name: 'Grab SOme bear',
-    ),
-  ];
-
+class TaskScreen extends StatelessWidget {
   void addNewTaskCallback(String taskTitle) {
-    setState(() {
-      tasks.add(Task(name: taskTitle));
-    });
+//    setState(() {
+//      tasks.add(Task(name: taskTitle));
+//    });
   }
 
   @override
@@ -72,7 +54,7 @@ class _TaskScreenState extends State<TaskScreen> {
                       fontWeight: FontWeight.w700,
                     )),
                 Text(
-                  '12 Tasks',
+                  '${Provider.of<TaskData>(context).taskCount} Tasks',
                   style: TextStyle(color: Colors.white, fontSize: 18.0),
                 ),
               ],
@@ -86,9 +68,7 @@ class _TaskScreenState extends State<TaskScreen> {
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(30.0),
                       topRight: Radius.circular(30.0))),
-              child: TasksList(
-                tasks: tasks,
-              ),
+              child: TasksList(),
             ),
           )
         ],
