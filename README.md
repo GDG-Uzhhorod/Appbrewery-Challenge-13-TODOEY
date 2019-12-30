@@ -7,7 +7,7 @@
 [Appbrewery](https://www.appbrewery.co/): The Complete Flutter Development Bootcamp Using Dart 
 
 
-![Finished App](https://github.com/GDG-Uzhhorod/Appbrewery-Challenge-12-Flash-Chat/blob/master/gif.gif) 
+![Finished App](https://github.com/GDG-Uzhhorod/Appbrewery-Challenge-13-TODOEY/blob/master/screen.jpg) 
 
 
 ### NOTE!!! to run this project you need connect them with your Firebase Account
