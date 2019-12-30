@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
 class AddTaskPage extends StatelessWidget {
+  String newTaskTitle;
+  final Function addTaskCallBack;
+
+  AddTaskPage({@required this.addTaskCallBack});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,6 +30,9 @@ class AddTaskPage extends StatelessWidget {
               child: TextField(
                 textAlign: TextAlign.center,
                 autofocus: true,
+                onChanged: (text) {
+                  newTaskTitle = text;
+                },
               ),
             ),
             FlatButton(
@@ -33,7 +41,12 @@ class AddTaskPage extends StatelessWidget {
                 style: TextStyle(color: Colors.white, fontSize: 18.0),
               ),
               color: Colors.lightBlueAccent,
-              onPressed: () {},
+              onPressed: () {
+                if (newTaskTitle != null) {
+                  addTaskCallBack(newTaskTitle);
+                  Navigator.pop(context);
+                }
+              },
             )
           ],
         ),

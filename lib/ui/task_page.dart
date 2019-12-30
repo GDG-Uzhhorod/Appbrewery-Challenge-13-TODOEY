@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_todoey/models/task_model.dart';
 import 'package:flutter_todoey/ui/add_task_page.dart';
 import 'package:flutter_todoey/ui/widgets/tasks_list.dart';
 
@@ -8,6 +9,27 @@ class TaskScreen extends StatefulWidget {
 }
 
 class _TaskScreenState extends State<TaskScreen> {
+  List<Task> tasks = [
+    Task(
+      name: 'Grab SOme bear',
+    ),
+    Task(
+      name: 'Grab SOme bear',
+    ),
+    Task(
+      name: 'Grab SOme bear',
+    ),
+    Task(
+      name: 'Grab SOme bear',
+    ),
+  ];
+
+  void addNewTaskCallback(String taskTitle) {
+    setState(() {
+      tasks.add(Task(name: taskTitle));
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +38,9 @@ class _TaskScreenState extends State<TaskScreen> {
         onPressed: () {
           showModalBottomSheet(
               context: context,
-              builder: (BuildContext context) => AddTaskPage());
+              builder: (BuildContext context) => AddTaskPage(
+                    addTaskCallBack: addNewTaskCallback,
+                  ));
         },
         backgroundColor: Colors.lightBlueAccent,
         child: Icon(Icons.add),
@@ -62,7 +86,9 @@ class _TaskScreenState extends State<TaskScreen> {
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(30.0),
                       topRight: Radius.circular(30.0))),
-              child: TasksList(),
+              child: TasksList(
+                tasks: tasks,
+              ),
             ),
           )
         ],
